@@ -9,6 +9,8 @@
 
 FLAGS=""
 LIBS=""
+INCLUDE=""
+INCLUDE += "-I\"third-party/tools-storage/include\" "
 
 NAME=${2%.*}
 FOLDER=${2%/*}
@@ -60,7 +62,7 @@ then
     printf -- "\e[38;05;2;49;24;27m-- Compiling...\e[0m\n"
     [ -f build/$NAME.out ] && rm build/$NAME.out
     # Compiler command
-    $1.exe $FLAGS -I"include/" -I"third-party/toolbox/" -I"D:\workspace\MinGW\include" -L"lib/" -L"D:\workspace\MinGW\lib" $2 -o build/$NAME.out $LIBS
+    $1.exe $FLAGS -I"include/" -I"third-party/toolbox/" -I"D:\workspace\MinGW\include" $INCLUDE -L"lib/" -L"D:\workspace\MinGW\lib" $2 -o build/$NAME.out $LIBS
     # Success check
     if [ ! -f build/$NAME.out ]
     then
