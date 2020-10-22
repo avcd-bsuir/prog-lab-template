@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # License: CC BY-NC-SA 4.0
 # build.sh
 #
@@ -7,11 +5,13 @@
 #
 # Written by AlexeyFilich 2020
 
+#!/bin/bash
+
 FLAGS=""
 LIBS=""
 INCLUDE=""
-INCLUDE+="-Ithird-party/tools-storage/include "
-INCLUDE+="-Ithird-party/tools-stuff/include "
+INCLUDE += "-I\"third-party/tools-storage/include\" "
+INCLUDE += "-I\"third-party/tools-stuff/include\" "
 
 NAME=${2%.*}
 FOLDER=${2%/*}
@@ -63,7 +63,6 @@ then
     printf -- "\e[38;05;2;49;24;27m-- Compiling...\e[0m\n"
     [ -f build/$NAME.out ] && rm build/$NAME.out
     # Compiler command
-    # echo $1.exe $FLAGS -I"include/" -I"third-party/toolbox/" -I"D:\workspace\MinGW\include" $INCLUDE -L"lib/" -L"D:\workspace\MinGW\lib" $2 -o build/$NAME.out $LIBS
     $1.exe $FLAGS -I"include/" -I"third-party/toolbox/" -I"D:\workspace\MinGW\include" $INCLUDE -L"lib/" -L"D:\workspace\MinGW\lib" $2 -o build/$NAME.out $LIBS
     # Success check
     if [ ! -f build/$NAME.out ]
